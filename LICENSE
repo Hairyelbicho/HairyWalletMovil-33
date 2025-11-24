@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 MIT License
 
 Copyright (c) 2025 $HBT Hairy el Bicho Token
@@ -19,3 +20,12 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+=======
+Copyright (c) 2025 HairyWallet
+
+Este software y todo su contenido es propiedad exclusiva del autor bajo el seudónimo "HairyWallet".
+
+Queda estrictamente prohibida la copia, distribución, modificación, uso comercial o reutilización de este código fuente y cualquier parte de este proyecto sin el consentimiento explícito y por escrito del autor.
+
+Este repositorio está protegido por derechos de autor. Todos los derechos reservados.
+>>>>>>> b607595 (chore: clean repo and add HairyWallet desktop build (no binaries))
