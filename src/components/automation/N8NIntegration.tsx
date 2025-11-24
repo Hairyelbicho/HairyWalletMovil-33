@@ -444,3 +444,5 @@ export default function N8NIntegration({ onClose }: N8NIntegrationProps) {
     </div>
   );
 }
+
+

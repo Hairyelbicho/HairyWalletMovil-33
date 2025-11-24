@@ -106,7 +106,7 @@ export default function SendPage() {
                       Firma: {txSignature}
                     </p>
                     <a
-                      href={`https://explorer.solana.com/tx/${txSignature}?cluster=devnet`}
+                      href={`https://explorer.solana.com/tx/${txSignature}?cluster=mainnet-beta`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center space-x-1 text-sm text-green-300 hover:text-green-200 transition-colors cursor-pointer"
@@ -240,3 +240,6 @@ export default function SendPage() {
     </div>
   );
 }
+
+
+

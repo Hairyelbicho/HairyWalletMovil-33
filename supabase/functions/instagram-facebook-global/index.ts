@@ -376,3 +376,4 @@ ${sale_data.market_flag} **${sale_data.market_name}**
     )
   }
 })
+

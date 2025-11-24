@@ -34,7 +34,7 @@ const CreateWalletScreen = () => {
       await EncryptedStorage.setItem('mnemonic', phrase);
       await EncryptedStorage.setItem('publicKey', pubKey);
 
-      const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
+      const connection = new Connection(clusterApiUrl('mainnet-beta'), 'confirmed');
       try {
         const sig = await connection.requestAirdrop(keypair.publicKey, LAMPORTS_PER_SOL);
         await connection.confirmTransaction(sig, 'confirmed');
@@ -89,3 +89,6 @@ const styles = StyleSheet.create({
 });
 
 export default CreateWalletScreen;
+
+
+

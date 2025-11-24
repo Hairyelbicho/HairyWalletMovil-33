@@ -323,3 +323,4 @@ async function sendNotification(supabase: any, notification: any) {
       created_at: new Date().toISOString()
     })
 }
+

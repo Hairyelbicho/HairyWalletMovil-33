@@ -270,3 +270,6 @@ export default function AutoOrderSystem() {
     </div>
   );
 }
+
+
+

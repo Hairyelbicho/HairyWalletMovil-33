@@ -294,3 +294,5 @@ app.on('web-contents-created', (event, contents) => {
 process.on('uncaughtException', (error) => {
   console.error('Error no capturado:', error);
 });
+
+

@@ -152,7 +152,7 @@ export default function Dashboard() {
               <div
                 key={index}
                 className="bg-white/5 rounded-xl p-4 hover:bg-white/10 transition-all cursor-pointer"
-                onClick={() => window.open(`https://explorer.solana.com/tx/${tx.signature}?cluster=devnet`, '_blank')}
+                onClick={() => window.open(`https://explorer.solana.com/tx/${tx.signature}?cluster=mainnet-beta`, '_blank')}
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-3">
@@ -186,7 +186,7 @@ export default function Dashboard() {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-            <span className="text-white text-sm font-medium">Conectado a Solana Devnet</span>
+            <span className="text-white text-sm font-medium">Conectado a Solana mainnet-beta</span>
           </div>
           <a
             href="https://faucet.solana.com"
@@ -201,3 +201,6 @@ export default function Dashboard() {
     </div>
   );
 }
+
+
+

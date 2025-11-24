@@ -25,3 +25,5 @@ contextBridge.exposeInMainWorld('electronAPI', {
 window.addEventListener('DOMContentLoaded', () => {
   console.log('HairyWallet Desktop cargado correctamente');
 });
+
+

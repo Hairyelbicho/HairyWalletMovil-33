@@ -432,3 +432,6 @@ ${isPromotionActive ? '🎉 PROMOCIÓN INAUGURACIÓN ACTIVA - Comisión 20%' : '
     </div>
   );
 }
+
+
+

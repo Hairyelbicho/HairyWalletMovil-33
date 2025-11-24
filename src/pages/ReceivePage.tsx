@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { useWallet } from '../contexts/WalletContext';
 import { QRCodeSVG } from 'qrcode.react';
 
+// Alias .sol de tu wallet en mainnet
+const HAIRY_DOMAIN = 'billeterapeluda.sol';
+
 export default function ReceivePage() {
   const navigate = useNavigate();
   const { address } = useWallet();
@@ -20,6 +23,7 @@ export default function ReceivePage() {
   const getQRValue = () => {
     if (!address) return '';
     if (amount && !isNaN(parseFloat(amount))) {
+      // Formato estándar de URI de pago de Solana
       return `solana:${address}?amount=${amount}`;
     }
     return address;
@@ -27,12 +31,14 @@ export default function ReceivePage() {
 
   const shareAddress = async () => {
     if (!address) return;
-    
+
     if (navigator.share) {
       try {
         await navigator.share({
           title: 'Mi dirección de HairyWallet',
-          text: `Envíame SOL a esta dirección: ${address}`
+          text: `Envíame SOL a esta dirección: ${address}${
+            HAIRY_DOMAIN ? ` (alias: ${HAIRY_DOMAIN})` : ''
+          }`,
         });
       } catch (err) {
         console.log('Error sharing:', err);
@@ -51,7 +57,9 @@ export default function ReceivePage() {
             </div>
             <div>
               <h1 className="text-2xl font-bold text-white">Recibir SOL</h1>
-              <p className="text-sm text-purple-200">Comparte tu dirección para recibir pagos</p>
+              <p className="text-sm text-purple-200">
+                Comparte tu dirección para recibir pagos
+              </p>
             </div>
           </div>
           <button
@@ -100,18 +108,39 @@ export default function ReceivePage() {
         {/* Address Display */}
         <div className="bg-white/5 rounded-xl p-4 mb-6 border border-white/10">
           <p className="text-xs text-purple-200 mb-2">Tu dirección de Solana</p>
+
+          {/* Alias .sol si quieres mostrarlo */}
+          {HAIRY_DOMAIN && (
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sm text-cyan-200 font-semibold">
+                {HAIRY_DOMAIN}
+              </span>
+              <span className="text-[10px] bg-cyan-500/20 text-cyan-100 px-2 py-1 rounded-full border border-cyan-400/40">
+                Alias .sol
+              </span>
+            </div>
+          )}
+
           <div className="flex items-center justify-between">
-            <p className="text-white font-mono text-sm break-all flex-1 mr-4">{address}</p>
+            <p className="text-white font-mono text-sm break-all flex-1 mr-4">
+              {address}
+            </p>
             <button
               onClick={copyAddress}
               className="flex items-center justify-center w-10 h-10 bg-white/10 hover:bg-white/20 rounded-lg transition-all flex-shrink-0 cursor-pointer"
               title="Copiar dirección"
             >
-              <i className={`${copied ? 'ri-check-line' : 'ri-file-copy-line'} text-lg text-white`}></i>
+              <i
+                className={`${
+                  copied ? 'ri-check-line' : 'ri-file-copy-line'
+                } text-lg text-white`}
+              ></i>
             </button>
           </div>
           {copied && (
-            <p className="text-green-300 text-xs mt-2">¡Dirección copiada al portapapeles!</p>
+            <p className="text-green-300 text-xs mt-2">
+              ¡Dirección copiada al portapapeles!
+            </p>
           )}
         </div>
 
@@ -124,8 +153,8 @@ export default function ReceivePage() {
             <i className="ri-file-copy-line text-lg"></i>
             <span>Copiar</span>
           </button>
-          
-          {navigator.share && (
+
+          {typeof navigator !== 'undefined' && (navigator as any).share && (
             <button
               onClick={shareAddress}
               className="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white font-semibold py-3 px-6 rounded-xl transition-all shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 cursor-pointer whitespace-nowrap"
@@ -143,7 +172,12 @@ export default function ReceivePage() {
               <i className="ri-information-line text-xl text-blue-400 flex-shrink-0 mt-0.5"></i>
               <div className="text-xs text-blue-200">
                 <p className="font-semibold mb-1">Cómo recibir SOL:</p>
-                <p>Comparte tu dirección o código QR con quien quiera enviarte SOL. Las transacciones aparecerán automáticamente en tu wallet.</p>
+                <p>
+                  Comparte tu dirección, tu alias{' '}
+                  {HAIRY_DOMAIN && <strong>{HAIRY_DOMAIN}</strong>} o tu código
+                  QR con quien quiera enviarte SOL. Las transacciones aparecerán
+                  automáticamente en tu wallet.
+                </p>
               </div>
             </div>
           </div>
@@ -153,17 +187,24 @@ export default function ReceivePage() {
               <i className="ri-alert-line text-xl text-yellow-400 flex-shrink-0 mt-0.5"></i>
               <div className="text-xs text-yellow-200">
                 <p className="font-semibold mb-1">Importante:</p>
-                <p>Esta dirección solo acepta SOL y tokens SPL en la red de Solana. No envíes criptomonedas de otras redes.</p>
+                <p>
+                  Esta dirección solo acepta SOL y tokens SPL en la red de
+                  Solana. No envíes criptomonedas de otras redes.
+                </p>
               </div>
             </div>
           </div>
 
           <div className="bg-green-500/10 border border-green-400/30 rounded-xl p-4">
             <div className="flex items-start space-x-3">
-              <i className="ri-test-tube-line text-xl text-green-400 flex-shrink-0 mt-0.5"></i>
+              <i className="ri-earth-line text-xl text-green-400 flex-shrink-0 mt-0.5"></i>
               <div className="text-xs text-green-200">
-                <p className="font-semibold mb-1">Red de prueba (Devnet):</p>
-                <p>Actualmente estás en Devnet. Puedes obtener SOL de prueba gratis en <a href="https://faucet.solana.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-green-100">faucet.solana.com</a></p>
+                <p className="font-semibold mb-1">Red principal (mainnet-beta):</p>
+                <p>
+                  Estás usando la red principal de Solana (mainnet-beta). Aquí
+                  los SOL tienen valor real. Asegúrate siempre de comprobar la
+                  dirección o alias antes de recibir o enviar fondos.
+                </p>
               </div>
             </div>
           </div>

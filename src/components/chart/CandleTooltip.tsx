@@ -24,3 +24,5 @@ const CandleTooltip: React.FC<CandleTooltipProps> = ({ active, payload }) => {
 };
 
 export default CandleTooltip
+
+

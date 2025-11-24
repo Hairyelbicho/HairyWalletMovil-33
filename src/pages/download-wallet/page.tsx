@@ -529,3 +529,6 @@ export default function DownloadWalletPage() {
     </div>
   );
 }
+
+
+

@@ -169,7 +169,7 @@ export default function TransactionHistoryPage() {
                 <div
                   key={index}
                   className="bg-white/5 rounded-xl p-4 hover:bg-white/10 transition-all cursor-pointer"
-                  onClick={() => window.open(`https://explorer.solana.com/tx/${tx.signature}?cluster=devnet`, '_blank')}
+                  onClick={() => window.open(`https://explorer.solana.com/tx/${tx.signature}?cluster=mainnet-beta`, '_blank')}
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3 flex-1">
@@ -244,3 +244,6 @@ export default function TransactionHistoryPage() {
     </div>
   );
 }
+
+
+

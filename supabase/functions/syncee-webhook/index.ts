@@ -220,3 +220,4 @@ function getNotificationTitle(eventType: string): string {
   
   return titles[eventType] || '🔔 Notificación de Syncee'
 }
+
